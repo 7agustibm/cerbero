@@ -1,0 +1,13 @@
+#%RAML 1.0
+---
+title: Cerbero API
+baseUri: http://{domain}/api/{version}/oauth
+version: v2
+mediaType:  application/json
+baseUriParameters:
+  domain:
+    description: Your domain
+
+/:
+  get:
+  post:

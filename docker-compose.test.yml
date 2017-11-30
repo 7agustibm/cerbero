@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  oauth:
+    build: .
+    command: npm start
+    links:
+      - rabbit
+    environment:
+      - NODE_ENV=production
+      - RABBITMQ_URL=amqp://rabbit
+    command: sh -c './wait-for-it.sh rabbit:5672 -- npm run test:bdd'
+  rabbit:
+    image: rabbitmq:alpine
