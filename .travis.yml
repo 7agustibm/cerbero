@@ -4,11 +4,13 @@ services:
   - docker
 
 before_install:
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - curl -fsSL get.docker.com -o get-docker.sh
+  - sudo sh get-docker.sh
   - sudo apt-get update
-  - sudo apt-get -y install docker-ce build-essential python-pip
-  - pip install docker-compose
+  - sudo apt-get -y install build-essential
+  - sudo usermod -aG docker $USER
+  - sudo curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-compose
 
 script:
-  - make bdd
+  - sudo make bdd
