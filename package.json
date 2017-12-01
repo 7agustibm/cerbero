@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",
+    "precoverage": "npm test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "dev": "ts-node src/main",
     "test": "nyc mocha",
     "test:bdd": "cucumberjs --compiler ts:ts-node/register -f summary -f json:cucumber.json test/features/"
@@ -27,6 +29,7 @@
     "@types/sinon": "^2.3.7",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "coveralls": "^3.0.0",
     "cucumber": "^3.1.0",
     "mocha": "^4.0.1",
     "nyc": "^11.3.0",

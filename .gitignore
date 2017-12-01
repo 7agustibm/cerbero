@@ -5,3 +5,4 @@ coverage
 dist
 cucumber.json
 sqlitedb.db
+*.log
