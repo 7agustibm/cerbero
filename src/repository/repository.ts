@@ -29,7 +29,11 @@ export abstract class OAuthRepository {
     }
 
     save(user: OAuthEntity) {
-        return this.repository.save(user);
+    	return this.repository.save(user)
+    		.then(data => {
+			console.log(data);
+			return data;
+		});
     }
 
     delete(id: string) {

@@ -24,9 +24,5 @@ push: ## Run for dev
 	docker push agustibm/cerbero
 
 bdd: ## Runing BDD test
-	docker-compose -f docker-compose.test.yml -p ci up -d --build
-	docker wait ci_oauth_1
+	sh scripts/bdd.sh
 
-clean: ## Clean
-	docker-compose -f docker-compose.test.yml -p ci stop
-	docker-compose -f docker-compose.test.yml -p ci rm -f
